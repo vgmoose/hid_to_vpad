@@ -83,10 +83,10 @@ DECL(s32, VPADRead, s32 chan, VPADData *buffer, u32 buffer_size, s32 *error) {
 }
 
 DECL(s32, WPADProbe, s32 chan, u32 * result ){
-   if( (chan == 0 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
-        (chan == 1 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
-        (chan == 2 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
-        (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
+   if( (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
+        (chan == 4 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
+        (chan == 5 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
+        (chan == 6 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
         if(result != NULL){
             *result = WPAD_EXT_PRO_CONTROLLER;
         }
@@ -101,10 +101,10 @@ DECL(wpad_connect_callback_t,WPADSetConnectCallback,s32 chan, wpad_connect_callb
 
     ControllerPatcher::setWPADConnectCallback(chan,callback);
 
-    if( (chan == 0 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
-        (chan == 1 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
-        (chan == 2 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
-        (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
+    if( (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
+        (chan == 4 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
+        (chan == 5 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
+        (chan == 6 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
             if(callback != NULL){
                 callback(chan,0);
             }
@@ -117,10 +117,10 @@ DECL(wpad_extension_callback_t,WPADSetExtensionCallback,s32 chan, wpad_extension
 
     ControllerPatcher::setKPADExtensionCallback(chan,callback);
 
-    if((chan == 0 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
-        (chan == 1 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
-        (chan == 2 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
-        (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
+    if((chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
+        (chan == 4 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
+        (chan == 5 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
+        (chan == 6 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
             if(callback != NULL){
                 callback(chan,WPAD_EXT_PRO_CONTROLLER);
             }
@@ -133,10 +133,10 @@ DECL(wpad_connect_callback_t,KPADSetConnectCallback,s32 chan, wpad_connect_callb
 
     ControllerPatcher::setKPADConnectedCallback(chan,callback);
 
-    if( (chan == 0 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
-        (chan == 1 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
-        (chan == 2 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
-        (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
+    if( (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
+        (chan == 4 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
+        (chan == 5 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
+        (chan == 6 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
             if(callback != NULL){
                 callback(chan,0);
             }
@@ -147,10 +147,10 @@ DECL(wpad_connect_callback_t,KPADSetConnectCallback,s32 chan, wpad_connect_callb
 DECL(u8, WPADGetBatteryLevel, s32 chan){
     u8 result = real_WPADGetBatteryLevel(chan);
 
-   if( (chan == 0 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
-        (chan == 1 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
-        (chan == 2 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
-        (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
+   if( (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
+        (chan == 4 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
+        (chan == 5 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
+        (chan == 6 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
         result = 4; // Full battery
     }
     return result;
@@ -159,10 +159,10 @@ DECL(u8, WPADGetBatteryLevel, s32 chan){
 //In case a game relies on this...
 DECL(u32, WPADGetDataFormat, s32 chan){
     //log_printf("WPADGetDataFormat chan: %d result: %d\n",chan,result);
-    if((chan == 0 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
-    (chan == 1 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
-    (chan == 2 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
-    (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
+    if((chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
+    (chan == 4 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
+    (chan == 5 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
+    (chan == 6 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
          return WPAD_FMT_PRO_CONTROLLER;
     }
     return real_WPADGetDataFormat(chan);
@@ -170,10 +170,10 @@ DECL(u32, WPADGetDataFormat, s32 chan){
 
 DECL(s32, WPADSetDataFormat, s32 chan, u32 fmt){
     s32 result = -1;
-    if((chan == 0 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
-    (chan == 1 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
-    (chan == 2 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
-    (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
+    if((chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
+    (chan == 4 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
+    (chan == 5 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
+    (chan == 6 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
         real_WPADSetDataFormat(chan,WPAD_FMT_PRO_CONTROLLER);
         result = 0;
     }
@@ -182,10 +182,10 @@ DECL(s32, WPADSetDataFormat, s32 chan, u32 fmt){
 }
 
 DECL(void,WPADRead,s32 chan, WPADReadData *data ){
-    if((chan == 0 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
-        (chan == 1 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
-        (chan == 2 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
-        (chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
+    if((chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)) ||
+        (chan == 4 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)) ||
+        (chan == 5 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)) ||
+        (chan == 6 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4))){
             ControllerPatcher::setProControllerDataFromHID((void*)data,chan,PRO_CONTROLLER_MODE_WPADReadData);
     }else{
         real_WPADRead(chan,data);
@@ -194,13 +194,13 @@ DECL(void,WPADRead,s32 chan, WPADReadData *data ){
 }
 
 DECL(void,WPADControlMotor,s32 chan, u32 status ){
-    if(chan == 0 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)){
+    if(chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro1)){
         ControllerPatcher::setRumble(UController_Type_Pro1,status);
-    }else if(chan == 1 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)){
+    }else if(chan == 4 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro2)){
         ControllerPatcher::setRumble(UController_Type_Pro2,status);
-    }else if(chan == 2 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)){
+    }else if(chan == 5 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro3)){
         ControllerPatcher::setRumble(UController_Type_Pro3,status);
-    }else if(chan == 3 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4)){
+    }else if(chan == 6 && ControllerPatcher::isControllerConnectedAndActive(UController_Type_Pro4)){
         ControllerPatcher::setRumble(UController_Type_Pro4,status);
     }
     real_WPADControlMotor(chan,status);
@@ -236,4 +236,3 @@ u32 method_hooks_size_hid_controller __attribute__((section(".data"))) = sizeof(
 
 //! buffer to store our instructions needed for our replacements
 volatile u32 method_calls_hid_controller[sizeof(method_hooks_hid_controller) / sizeof(hooks_magic_t) * FUNCTION_PATCHER_METHOD_STORE_SIZE] __attribute__((section(".data")));
-
